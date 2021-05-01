@@ -5,7 +5,8 @@ updates:
   - package-ecosystem: 'github-actions'
     directory: '/'
     schedule:
-      interval: monthly
+      interval: daily
+      time: '05:00'
 
   # Enable updates to the dependencies of our Dockerfile
   - package-ecosystem: docker
