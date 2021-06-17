@@ -37,4 +37,7 @@ WORKDIR /opt/test-runner/
 COPY --from=runner_builder /build/runner bin/
 COPY bin/run.sh bin/
 COPY src/unittest_json.nim src/
+SHELL ["/bin/ash", "-eo", "pipefail", "-c"]
+RUN find / -type f -exec du -k {} + | sort -nr | head -n20 | cut -f2 | xargs du -sh \
+    && du -k -d1 / | sort -nr | cut -f2 | xargs du -sh
 ENTRYPOINT ["/opt/test-runner/bin/run.sh"]
